@@ -1,0 +1,21 @@
+﻿@model List<ActionResultTurleri.Models.Urun>
+    
+<table class="table">
+    <thead>
+        <tr>
+            <td>Ürün Kodu</td>
+            <td>Ürün Adı</td>
+            <td>Fiyatı</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var urun in Model)
+        {
+        <tr>
+            <th>@urun.Id</th>
+            <th>@urun.Adi</th>
+            <th>@urun.Fiyati</th>
+        </tr>
+        }
+    </tbody>
+</table>

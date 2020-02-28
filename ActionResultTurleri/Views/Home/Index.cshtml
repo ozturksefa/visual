@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@Html.Action("UrunListele")
+<hr />
+@Html.Action("UrunListele2")
+
+
+<hr />
+
+<h1>Ürün Sorgula</h1>
+<input type="button" id="btnUrunGetir" value="Ürün Getir" />
+<h1 id="id"></h1>
+<h1 id="adi"></h1>
+<h1 id="fiyati"></h1>
+
+<script>
+    $(function () {
+        $("#btnUrunGetir").click(
+            function () {
+                try {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Home/UrunGetir",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (data) {
+                            //alert('Ürün Adı:' + data.Adi);
+                            $("#id").text("Ürün Kodu:" + data.Id);
+                            $("#adi").text("Ürün Adı:" + data.Adi);
+                            $("#fiyati").text("Fiyatı:" + data.Fiyati);
+                        }
+                    });
+                } catch (e) {
+                    console.log(e);
+                }
+            });
+    });
+</script>
